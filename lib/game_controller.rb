@@ -23,14 +23,14 @@ class GameController
     number_of_doors = get_positive_integer('Enter the number of doors (at least 3): ', 3)
     return unless number_of_doors
 
-    picked_door = get_positive_integer("Enter the number of the picked door (1 to #{number_of_doors}): ", 1, number_of_doors)
-    return unless picked_door
+    # picked_door = get_positive_integer("Enter the number of the picked door (1 to #{number_of_doors}): ", 1, number_of_doors)
+    # return unless picked_door
 
     change_door = get_yes_no('Change the door? (y/n): ') == 'y' ? true : false
     show_progress = get_yes_no('Show the progress of the game? (y/n): ') == 'y' ? true : false
 
     game = Game.new(number_of_doors)
-    puts "The relative frequency of wins: #{game.experiment(number_of_games, number_of_doors, picked_door, change_door, show_progress)}"
+    puts "The relative frequency of wins: #{game.experiment(number_of_games, number_of_doors, change_door, show_progress)}"
   end
 
   def run_experiment

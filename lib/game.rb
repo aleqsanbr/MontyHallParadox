@@ -137,14 +137,15 @@ class Game
   # Plays the game a specified number of times and returns the relative frequency of wins.
   # @param number_of_games [Integer] the number of games to play
   # @param number_of_doors [Integer] the number of doors in the game
-  # @param picked_door [Integer] the number of the door to pick (starting from 1)
   # @param change_door [Boolean] whether to change the door in the game
   # @param show_progress [Boolean] whether to show the progress of the game
   # @return [Float] the relative frequency of wins
-  def experiment(number_of_games, number_of_doors, picked_door, change_door, show_progress = false)
+  def experiment(number_of_games, number_of_doors, change_door, show_progress = false)
     wins = 0
     number_of_games.times do |i|
       game = Game.new(number_of_doors)
+      # pick the door randomly
+      picked_door = rand(1..number_of_doors).to_i
       game.pick_door(picked_door)
       if show_progress
         puts "\rPlaying game #{i + 1} of #{number_of_games}...\n"
@@ -172,8 +173,8 @@ class Game
     puts 'Doors | With changing | Without changing'
     puts '----------------------------------------'
     (num_doors_lower_bound..num_doors_upper_bound).each do |num_doors|
-      freq_with_change = experiment(number_of_games, num_doors, 1, change_door).round(6)
-      freq_without_change = experiment(number_of_games, num_doors, 1, !change_door).round(6)
+      freq_with_change = experiment(number_of_games, num_doors, change_door).round(6)
+      freq_without_change = experiment(number_of_games, num_doors, !change_door).round(6)
       puts "#{num_doors.to_s.ljust(5)} | #{freq_with_change.to_s.ljust(13)} | #{freq_without_change}"
     end
   end
