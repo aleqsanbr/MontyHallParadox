@@ -24,18 +24,6 @@ class Game
     "#{result}\n"
   end
 
-  # def [](index)
-  #   @doors[index]
-  # end
-  #
-  # def []=(index, value)
-  #   @doors[index] = value
-  # end
-  #
-  # def size
-  #   @doors.size
-  # end
-
   # Opens the door.
   # @param door_number [Integer] the number of the door to open (starting from 1)
   def open_door(door_number)
@@ -98,10 +86,12 @@ class Game
     end
   end
 
+  # @return [Boolean] whether the picked door is opened
   def picked_door_opened?
     @doors[@picked_door].is_opened
   end
 
+  # @return [Boolean] whether the picked door has a prize
   def picked_door_has_prize?
     @doors[@picked_door].has_prize
   end

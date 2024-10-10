@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module InputHelper
+  # Requires the user to enter a positive integer. If the input is not a valid number, the user will be prompted to enter a valid number.
+  # @param prompt [String] the message to display to the user
+  # @param min_value [Integer] the minimum value that the number can have
+  # @param max_value [Integer] the maximum value that the number can have
+  # @return [Integer] the positive integer entered by the user
   def get_positive_integer(prompt, min_value = 1, max_value = nil)
     loop do
       print prompt
@@ -14,6 +19,9 @@ module InputHelper
     end
   end
 
+  # Requires the user to enter 'y' or 'n'. If the input is not 'y' or 'n', the user will be prompted to enter a valid input.
+  # @param prompt [String] the message to display to the user
+  # @return [String] 'y' or 'n' entered by the user
   def get_yes_no(prompt)
     loop do
       print prompt
